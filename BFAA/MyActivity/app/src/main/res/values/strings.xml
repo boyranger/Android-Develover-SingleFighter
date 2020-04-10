@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">MyActivity</string>
+    <string name="panjang">Panjang</string>
+    <string name="lebar">Lebar</string>
+    <string name="tinggi">Tinggi</string>
+    <string name="hitung">Hitung</string>
+    <string name="_24sp">24sp</string>
 </resources>
