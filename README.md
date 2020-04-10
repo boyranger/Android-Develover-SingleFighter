@@ -21,7 +21,7 @@ Fitur:
 - List >10 item
 - Halaman Detail
 
-2.Halaman Detail
+2. Halaman Detail
 - Gambar dan informasi
 3. Halaman About
 -Foto diri, nama dan email di dicoding
