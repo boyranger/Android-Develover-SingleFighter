@@ -28,6 +28,8 @@ Fitur:
 
 ## Kelas 4. Belajar Fundamental Aplikasi Android
 * CodeLabs 1:Activities
+
+![MyActivity](https://photos.app.goo.gl/dcFQqMBrW5gSE4MGA "MyActivity")
 * CodeLabs 2: Fragement
 * CodeLabs 3: Intent
 * CodeLabs 4: ListView
