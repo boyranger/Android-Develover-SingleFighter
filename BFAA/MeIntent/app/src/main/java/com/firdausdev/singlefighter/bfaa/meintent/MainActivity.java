@@ -1,5 +1,6 @@
 package com.firdausdev.singlefighter.bfaa.meintent;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -7,8 +8,12 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+    TextView tvResult;
+    private int REQUEST_CODE = 110;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +43,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //Inten Implicit
         Button btnDialPhone = findViewById(R.id.btn_dial_number);
         btnDialPhone.setOnClickListener(this);
+        //=========================================================================================
+        //Intent ResultActivity
+        Button btnMoveForResult = findViewById(R.id.btn_move_for_result);
+        btnMoveForResult.setOnClickListener(this);
+
+        tvResult=findViewById(R.id.tv_result);
+
     }
 
     @Override
@@ -51,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 https://medium.com/swlh/context-and-memory-leaks-in-android-82a39ed33002
                 constructor Inten
                 */
-                Intent moveIntent = new Intent(MainActivity.this, MainActivity.class);
+                Intent moveIntent = new Intent(MainActivity.this, MoveActivity.class);
                 startActivity(moveIntent);
                 //menjalankan activity tanpa membawa data Object [moveInten]
                 //startActivities(moveIntent);
@@ -93,6 +105,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Intent dialPhoneIntent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+phoneNumber));
                 startActivity(dialPhoneIntent);
                 break;
+            case R.id.btn_move_for_result:
+                Intent moveForResultIntent = new Intent(MainActivity.this, MoveForResultActivity.class);
+                startActivityForResult(moveForResultIntent, REQUEST_CODE);
+                break;
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode==REQUEST_CODE){
+            if (requestCode==MoveForResultActivity.RESULT_CODE){
+                int selectedValue = data.getIntExtra(MoveForResultActivity.EXTRA_SELECTED_VALUE,0);
+                tvResult.setText(String.format("Hasil : %s", selectedValue));
+            }
         }
     }
 }
