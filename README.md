@@ -28,6 +28,8 @@ Fitur:
 
 ## Kelas 4. Belajar Fundamental Aplikasi Android
 * CodeLabs 1:Activities
+
+[![MyActivity](BFAA/Screenshot_20200411-063449.png "MyActivity")]
 * CodeLabs 2: Fragement
 * CodeLabs 3: Intent
 * CodeLabs 4: ListView
