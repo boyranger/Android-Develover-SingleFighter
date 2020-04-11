@@ -35,4 +35,18 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"/>
 
+
+    <Button
+        android:id="@+id/btn_move_for_result"
+        android:layout_marginBottom="16dp"
+        android:text="@string/move_with_result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+  <TextView
+      android:id="@+id/tv_result"
+      android:gravity="center"
+      android:text="@string/hasil_dari_activity"
+      android:textSize="24sp"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"/>
 </LinearLayout>

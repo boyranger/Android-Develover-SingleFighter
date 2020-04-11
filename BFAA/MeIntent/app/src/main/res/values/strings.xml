@@ -14,5 +14,6 @@
     <string name="data_received">Data Diterima</string>
     <string name="object_received">Obyek diterima</string>
     <string name="this_is_moveactivity">Ini MoveActivity</string>
+    <string name="hasil_dari_activity">Hasil dari Activity</string>
 
 </resources>
