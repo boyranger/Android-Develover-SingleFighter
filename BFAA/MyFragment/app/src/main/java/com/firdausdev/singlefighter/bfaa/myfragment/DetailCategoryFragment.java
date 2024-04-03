@@ -1,34 +1,36 @@
 package com.firdausdev.singlefighter.bfaa.myfragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class DetailCategoryFragment extends Fragment implements View.OnClickListener {
-    TextView tvCategoryName, tvCategoryDesc;
-    Button btnProfile, btnShowDialog;
+    private TextView tvCategoryName, tvCategoryDesc;
 
-    public static String EXTRA_NAME = "extra_name";
+    static String EXTRA_NAME = "extra_name";
     public static String EXTRA_DESC = "extra_desc";
-    public String desc;
+    private String desc;
 
-    public String getDesc() {
+    private String getDesc() {
         return desc;
     }
 
-    public void setDesc(String desc) {
+    void setDesc(String desc) {
         this.desc = desc;
     }
 
@@ -38,8 +40,9 @@ public class DetailCategoryFragment extends Fragment implements View.OnClickList
 
         tvCategoryName=view.findViewById(R.id.tv_category_name);
         tvCategoryDesc=view.findViewById(R.id.tv_category_desc);
-        btnProfile=view.findViewById(R.id.btn_profile);
-        btnShowDialog=view.findViewById(R.id.btn_show_dialog);
+        Button btnProfile = view.findViewById(R.id.btn_profile);
+        btnProfile.setOnClickListener(this);
+        Button btnShowDialog = view.findViewById(R.id.btn_show_dialog);
         btnShowDialog.setOnClickListener(this);
     }
 
@@ -58,6 +61,7 @@ public class DetailCategoryFragment extends Fragment implements View.OnClickList
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        assert getArguments() != null;
         String categoryName = getArguments().getString(EXTRA_NAME);
         tvCategoryName.setText(categoryName);
         tvCategoryDesc.setText(getDesc());
@@ -67,9 +71,22 @@ public class DetailCategoryFragment extends Fragment implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btn_profile:
+                Intent mIntent = new Intent(getActivity(), ProfileActivity.class);
+                startActivity(mIntent);
                 break;
             case R.id.btn_show_dialog:
+                OptionDialogFragment mOptionDialogFragment = new OptionDialogFragment();
+
+                FragmentManager mFragmentManager = getChildFragmentManager();
+                mOptionDialogFragment.show(mFragmentManager, OptionDialogFragment.class.getSimpleName());
                 break;
         }
     }
+
+    public  final OptionDialogFragment.OnOptionDialogListener optionDialogListener = new OptionDialogFragment.OnOptionDialogListener() {
+        @Override
+        public void onOptionChosen(String text) {
+            Toast.makeText(getActivity(), text, Toast.LENGTH_SHORT).show();
+        }
+    };
 }
